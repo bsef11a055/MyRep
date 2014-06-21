@@ -1,0 +1,48 @@
+﻿
+@{
+    Layout = "~/views/shared/layout.cshtml";
+}
+
+@model MAIIIIIIIILLL.Models.signup
+
+
+
+        <div class="article">
+          <h2><span>Login</span> </h2>
+            <br />
+          <div class="clr"></div>
+        
+              @using (Html.BeginForm("verify","Signup",FormMethod.Post)) {
+                  
+               @Html.AntiForgeryToken()
+               @Html.ValidationSummary(true)
+            
+               <ol>
+              <li>
+                  @Html.Label("Email")
+                  @Html.TextBoxFor(model => model.email,new { @class = "text" })@@RocketMail.com &nbsp &nbsp
+                  @Html.ValidationMessageFor(model => model.email)
+              </li>
+              <li>
+                @Html.Label("Password")
+                @Html.PasswordFor(model => model.password,new { @class = "text" })
+                @Html.ValidationMessageFor(model => model.password)
+              </li>
+               </ol>
+              <br />
+              
+              <div id="d1"><p style="color:red">@ViewBag.x</p></div>
+              <input type="submit" value="Login" style="Background:#f8d97c ; border:#f8d97c ; height:30px ; border-radius:5px;"/>
+              <br /><br />
+              <input type="checkbox" value="Remember Me" /> <label for="name">Remember Me </label><br /><br />
+              
+              @Html.Label("Do not have an Account?")
+              @Html.ActionLink("SignUp", "sign")
+
+              }
+      
+        </div>
+      </div>
+  @section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}    

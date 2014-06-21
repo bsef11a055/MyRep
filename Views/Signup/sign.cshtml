@@ -1,0 +1,85 @@
+﻿@model MAIIIIIIIILLL.Models.signup
+
+@{
+    Layout = "~/views/shared/Layout.cshtml";
+}
+
+        <div class="article">
+          <h2><span>Sign</span> up</h2>
+          <div class="clr"></div>
+           
+           @using (Html.BeginForm("save","Signup",FormMethod.Post)) {
+      
+               @Html.AntiForgeryToken()
+               @Html.ValidationSummary(true)
+
+            <ol>
+              <li>
+               
+                  @Html.Label("First Name")
+                  @Html.TextBoxFor(model => model.firstname,new { @class = "text" })
+                  @Html.ValidationMessageFor(model => model.firstname)
+              </li>
+              <li>
+                  @Html.Label("Last Name")
+                  @Html.TextBoxFor(model => model.lastname,new { @class = "text" })
+                   @Html.ValidationMessageFor(model => model.lastname)
+              </li>
+
+              <li>
+                  @Html.Label("Email Address")
+                  @Html.TextBoxFor(model => model.email,new { @class = "text" })
+                  @Html.ValidationMessageFor(model => model.email)
+                
+
+                  @@RocketMail.com &nbsp &nbsp &nbsp<input type="button" id="c" value="Check Availability"  style="Background:#f8d97c ; border:#f8d97c ; height:30px ; border-radius:5px; " />
+               
+                 <div id="result" style="color:red"></div> 
+                   @Scripts.Render("~/bundles/jquery")
+                  <script>
+
+                      $(document).ready(function () {
+
+                          $('#c').click(function () {
+                              var email = $('#email').val();
+                              $.getJSON("/Signup/CheckUserName?email=" + email, function (data) {
+                                  if (data) {
+                                      $('#result').text("User already exists in database");
+                                  }
+                                  else {
+                                      $('#result').text("User Name is available");
+                                  }
+                              });
+
+                          });
+
+                      });
+                </script>
+              </li>
+             
+               <li>
+                  @Html.Label("Password")
+                  @Html.PasswordFor(model => model.password,new { @class = "text" })
+                  @Html.ValidationMessageFor(model => model.password)
+              </li>
+
+                <li>
+                  @Html.Label("Re-Enter Password")
+                  @Html.PasswordFor(model => model.passwordAgain,new { @class = "text" })
+              </li>
+              <li>
+                <input type="submit" name="imageField" id="imageField" class="send" value="submit" style="Background:#f8d97c ; border:#f8d97c ; height:30px ; border-radius:5px;" />
+                <div class="clr"></div>
+              </li>
+            </ol>
+      
+           }
+            
+        </div>
+     </div>
+    
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+

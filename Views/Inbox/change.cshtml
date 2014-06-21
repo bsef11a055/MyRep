@@ -1,0 +1,39 @@
+﻿@model MAIIIIIIIILLL.Models.signup
+
+@{
+    Layout = "~/views/shared/layout.cshtml";
+}
+
+
+
+  <div class="article">
+          <h2><span>Change</span> Password</h2>
+          <div class="clr"></div>
+           
+           @using (Html.BeginForm("changeP","Inbox",FormMethod.Post)) {
+               @Html.AntiForgeryToken()
+               @Html.ValidationSummary(true)
+      
+            <ol>
+              <li>
+                <label for="name">Old Password </label>
+                <input id="password" name="password" class="text" />
+                 @Html.ValidationMessageFor(model => model.password)
+              
+              </li>
+              <li>
+                 <label for="name">New Password </label>
+                <input id="passwordAgain" name="passwordAgain" class="text" />
+                 @Html.ValidationMessageFor(model => model.passwordAgain)
+              </li>
+
+                </ol>
+               <br />
+                  <input type="submit" id="c" value="Change"  style="Background:#f8d97c ; border:#f8d97c ; height:30px ; border-radius:5px;" />
+           }  
+                  </div>
+</div>
+
+  @section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}    

@@ -1,0 +1,116 @@
+﻿@{
+    ViewBag.Title = "Layout";
+}
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<style>
+    .centeredImage
+    {
+    text-align:center;
+    margin-top:0px;
+    margin-bottom:0px;
+    padding:0px;
+    }
+</style>
+
+
+<head>
+<title>Rocket Mail</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="~/Content/style.css" rel="stylesheet" type="text/css" />
+<!--<link rel="stylesheet" type="text/css" href="~/Content/coin-slider.css" />-->
+<script type="text/javascript" src="~/Scripts/cufon-yui.js"></script>
+<script type="text/javascript" src="~/Scripts/droid_sans_400-droid_sans_700.font.js"></script>
+<script type="text/javascript" src="~/Scripts/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="~/Scripts/script.js"></script>
+<script type="text/javascript" src="~/Scripts/coin-slider.min.js"></script>
+<script type="text/javascript" src="~/Scripts/jquery.validate.js" ></script>
+<script type="text/javascript" src="~/Scripts/jquery.validate.min.js" ></script>
+<script type="text/javascript" src="~/Scripts/jquery.validate-vsdoc.js" ></script>
+<script type="text/javascript" src="~/Scripts/jquery.validate.unobtrusive.js" ></script>
+<script type="text/javascript" src="~/Scripts/jquery.validate.unobtrusive.min.js" ></script>
+<script type="text/javascript" src="~/jquery.fancybox.pack.js"></script>
+<link rel="stylesheet" href="~/jquery.fancybox.css" type="text/css" media="screen" />
+     
+</head>
+
+
+
+
+
+
+
+<body>
+<div class="main">
+  <div class="header">
+    <div class="header_resize">
+      <div class="menu_nav">
+        <ul>
+         <li><a href="/Inbox/mail"><span>Inbox</span></a></li>
+          <li><a href="/Inbox/compose"><span>Compose</span></a></li>
+          <li><a href="/Inbox/about"><span>About Us</span></a></li>
+          <li><a href="/Inbox/sent"><span>SentMail</span></a></li>
+          <li class="active"><a href="/Signup/signin"><span>Logout</span></a></li>
+        </ul>
+      </div>
+      <div class="logo">
+        <h1><a href="index.html"><span>Rocket Mail</span> <small>Just do it!</small></a></h1>
+      </div>
+    </div>
+  </div>
+    </div>
+
+
+ <p class="centeredImage"><img src="~/images/slide2.jpg" width="1300" height="300" alt =""/></p>
+
+
+  <div class="content">
+    <div class="content_resize">
+      <div class="mainbar">
+        <div class="article">
+          <h2><span></span></h2>
+         <div class="clr"></div>
+          </div> 
+        
+
+
+
+           @RenderBody()
+          @Scripts.Render("~/bundles/jquery")
+    @RenderSection("scripts", required: false)
+
+          
+
+          <div class="sidebar">
+        <div class="searchform">
+          
+        </div>
+        <div class="gadget">
+          
+          <div class="clr"></div>
+          <ul class="star">
+            <h2><a href="/Inbox/compose">Compose</a></h2>
+            <h2><a href="/Inbox/mail">Inbox</a></h2>
+            <h2><a href="/Inbox/sent">Sent Mail</a></h2>
+           <!-- <h2><a href="/Trash/delete">Trash</a></h2>-->
+            
+          </ul>
+        </div>
+        
+      </div>
+      <div class="clr"></div>
+    </div>
+  </div>
+ 
+  <div class="footer">
+    <div class="footer_resize">
+      <p class="lf">&copy; <a href="#"></a>.</p>
+      <p class="rf"> <a ></a></p>
+      <div style="clear:both;"></div>
+    </div>
+  </div>
+</div>
+<div align=center></div></body>
+</html>

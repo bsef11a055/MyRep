@@ -1,0 +1,69 @@
+﻿@{
+    Layout = "~/views/shared/layout.cshtml";
+}
+
+
+
+        <div class="article">
+          <h2><span>Sent Mail</span> </h2>
+            <br />
+          <div class="clr"></div>
+          <form action="/Inbox/sent" method="post">
+               
+             <span>
+          
+            </span>
+          
+            
+                 <br /> <br/>
+             
+              <table id="t1">
+                  <tr> 
+                      <td><h2><pre style="font-family:Arial">Sender     </pre></h2></td>
+                      <td><h2><pre style="font-family:Arial">Message         </pre></h2></td>
+                      <td><h2><pre style="font-family:Arial">Date       </pre></h2></td>
+                      <td><h2><pre style="font-family:Arial">Attachment       </pre></h2></td>
+                     
+                  </tr>
+                 </table>
+         
+              <table id="t">
+                 
+                    @Scripts.Render("~/bundles/jquery")
+                  <script>
+
+                    
+
+
+                      $(document).ready(function () {
+
+                          $.getJSON("/Inbox/sent1", function (data) {
+
+                              $.each(data, function (i, item) {
+
+
+                                  $('#t').append('<tr><td><pre style="font-family:Arial">' + item.sender +
+                                      '</pre></td><td><pre style="font-family:Arial" >                                '
+                                      + item.message + '</pre></td><td><pre style="font-family:Arial">                     '
+                                      + item.date + '</pre>                       ' +
+                                              '</pre></td><td><pre style="font-family:Arial"> <a href=/Inbox/Delete/' + item.Id + '>Delete</a> </pre>            '
+                                             + ' <pre style="font-family:Arial"></pre>' + '<pre style="font-family:Arial"> <a href=/Inbox/attachment/' + item.Id +
+                                             '>Attachment</a></td></tr> ');
+
+                              });
+                          });
+
+                      });
+
+
+                </script>
+            
+              </table>
+
+          </form>
+        </div>
+      </div>
+
+   @section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}  

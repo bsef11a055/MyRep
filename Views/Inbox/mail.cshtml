@@ -1,0 +1,109 @@
+﻿
+
+@{
+    Layout = "~/views/shared/layout.cshtml";
+}
+
+<script type="text/ecmascript">
+    $(".fancybox").fancybox();
+             </script>
+        <div class="article">
+          <h2><span>Inbox</span> </h2>
+            <br />
+              <a class="fancybox" rel="group" href="~/pic.jpg"><img src="~/pic.jpg" height="50" width="50" alt=""/></a>
+            <a href="/Inbox/change?id=2" style="text-align:right">Change Password</a>
+            <br /><br /><br />
+          <div class="clr"></div>
+
+
+            
+          <form action="/Inbox/mail" method="post">
+               
+             <span>
+            <input type="text" name="editbox_search" class="editbox_search" id="editbox_search" maxlength="80" value="Search by sender" style="background-color:#585757 ; border-radius:5px ;height:27px ;border:none;color:#f8d97c" />
+            </span>
+          
+              <input type="button" id="c" value="search"  style="Background:#f8d97c ; border:#f8d97c ; height:30px ; border-radius:5px;" />
+                 <br /> <br/>
+             
+              <table id="t1">
+                  <tr> 
+                      <td><h2><pre style="font-family:Arial">Sender     </pre></h2></td>
+                      <td><h2><pre style="font-family:Arial">Message         </pre></h2></td>
+                      <td><h2><pre style="font-family:Arial">Date       </pre></h2></td>
+                      <td><h2><pre style="font-family:Arial">Attachment       </pre></h2></td>
+                     
+                  </tr>
+                 </table>
+              <!--<img id="a" src="~/Files/bb.png" />-->
+              <table id="t">
+                 
+                    @Scripts.Render("~/bundles/jquery")
+                  <script>
+                    
+                      function func() {
+                          alert("helllooo");
+
+                      }
+
+                          $(document).ready(function () {
+                              $('#c').click(function () {
+                                  var sen = $('#editbox_search').val();
+                            
+                                  $.getJSON("/Inbox/search?sender=" + sen, function (data) {
+                                 
+                                      $('#t').empty();
+                                  
+
+                                      $.each(data, function (i, item) {
+                                         
+                                          $('#t').append('<tr><td><pre style="font-family:Arial">' + item.sender + '</pre></td><td><pre style="font-family:Arial" >                                '
+                                              + item.message +
+                                              '</pre></td><td><pre style="font-family:Arial">   ' + item.date + '</pre>                      '+
+                                              '</pre></td><td><pre style="font-family:Arial"> <a href=/Inbox/Delete/'+item.Id+'>Delete</a> </pre>            '
+                                             + ' <pre style="font-family:Arial"></pre>'+'<pre style="font-family:Arial"> <a href=/Inbox/attachment/' + item.Id +
+                                             '>Attachment</a> </pre></td></tr> ');
+                                     
+                                      });
+                                          
+                                      });
+                                  
+
+                                  });
+
+                              });
+
+                         
+              
+                      $(document).ready(function () {
+
+                          $.getJSON("/Inbox/mail1", function (data) {
+                              
+                              $.each(data, function (i, item) {
+                                
+                                 
+                                  $('#t').append('<tr><td><pre style="font-family:Arial">' + item.sender +
+                                      '</pre></td><td><pre style="font-family:Arial" >                                '
+                                      + item.message + '</pre></td><td><pre style="font-family:Arial">                     '
+                                      + item.date + '</pre>                       ' +
+                                              '</pre></td><td><pre style="font-family:Arial"> <a href=/Inbox/Delete/' + item.Id + '>Delete</a> </pre>            '
+                                             + ' <pre style="font-family:Arial"></pre>'+'<pre style="font-family:Arial"> <a href=/Inbox/attachment/' + item.Id +
+                                             '>Attachment</a></td></tr> ');
+                                        
+                                     });
+                          });
+                          
+                      });
+
+
+                </script>
+            
+              </table>
+
+          </form>
+        </div>
+      </div>
+
+   @section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}  

@@ -1,0 +1,60 @@
+﻿
+@{
+    Layout = "~/views/shared/layout.cshtml";
+}
+
+@model MAIIIIIIIILLL.Models.inbox
+
+
+
+
+        <div class="article">
+          <h2><span>Compose</span> mail</h2>
+              
+          
+            <div class="clr"></div>
+       
+               @using (Html.BeginForm("send","Inbox",FormMethod.Post)) {
+                   
+               @Html.AntiForgeryToken()
+               @Html.ValidationSummary(true)
+
+            <ol>
+              <li>
+                <label for="name">To </label>
+            
+                   @Html.TextBoxFor(model => model.receiver,new { @class = "text" })@@RocketMail.com &nbsp &nbsp
+                   @Html.ValidationMessageFor(model => model.receiver)
+              </li>
+              <li>
+                <label for="email">Subject  </label>
+                <input id="subject" name="subject" class="text" />
+              </li>
+             <li>
+                <label for="attachmnt">Attachment  </label>
+          
+              <input type="file" name="image" />
+              <br /><br/>
+
+            </li>
+              <li>
+                <label for="message">Your Message</label>
+                <textarea id="message" name="message" rows="8" cols="50"></textarea>
+              </li>
+              <li>
+                <input type="submit" name="imageField" id="imageField" value="send" class="send" style="Background:#f8d97c ; border:#f8d97c ; height:30px ; width:80px; border-radius:5px;" />
+                <div class="clr"></div>
+              </li>
+            </ol>
+          <!--</form>-->
+               }
+        </div>
+      </div>
+
+ 
+
+ @section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+}    
+
